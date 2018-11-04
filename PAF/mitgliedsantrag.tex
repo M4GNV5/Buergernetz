@@ -1,10 +1,11 @@
 \documentclass[a4paper,10pt]{article}
 
-\usepackage{lmodern}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
 \usepackage[skins]{tcolorbox}
 \usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
 
@@ -39,7 +40,7 @@
 	\vspace{0.2cm}
     Name*		& \UnderlinedField{lastName}{0.31\textwidth}	& Vorname*		& \UnderlinedField{firstName}{0.31\textwidth} \\
     \vspace{0.2cm}
-    Geburtsdatum*	& \UnderlinedField{birthdate}{0.31\textwidth} & Telefon		& \UnderlinedField{phone}{0.31\textwidth} \\
+    Geburtsdatum*	& \UnderlinedField{birthdate}{0.31\textwidth}	& Telefon		& \UnderlinedField{phone}{0.31\textwidth} \\
     \vspace{0.2cm}
     E-Mail		& \multicolumn{3}{l}{\UnderlinedField{email}{0.82\textwidth}} \\
     \vspace{0.2cm}
@@ -52,9 +53,10 @@ Art der Mitgliedschaft*:
 	\ChoiceMenu[radio,name=memberType,bordercolor=black,radiosymbol=\ding{54}]{}{ } Natürliche Person
 	\ChoiceMenu[radio,name=memberType,bordercolor=black,radiosymbol=\ding{54}]{}{ } Familie
 	\ChoiceMenu[radio,name=memberType,bordercolor=black,radiosymbol=\ding{54}]{}{ } Unternehmen, Verein oder Behörde
+\\
+Der Mitgliedsbeitrag beträgt 24€ / Jahr für natürliche Personen. Familien, Unternehmen, Vereine und Behörden zahlen 48€ / Jahr. Die Familienmitgliedschaft besteht aus einzelnen Accounts für jedes Familienmitglied.\\
 
-\vspace{0.2cm}
-\CheckBox[name=constitution,bordercolor=black,checkboxsymbol=\ding{54}]{ } Ich habe die Satzung gelesen und akzeptiere sie (\href{https://www.bn-paf.de/satzung.pdf}{https://www.bn-paf.de/satzung.pdf})
+\CheckBox[name=constitution,bordercolor=black,checkboxsymbol=\ding{54}]{ } Ich habe die Satzung gelesen und akzeptiere sie* (\href{https://www.bn-paf.de/satzung.pdf}{\texttt{https://www.bn-paf.de/satzung.pdf}})
 
 
 \section*{E-Mail \& Homepage}
@@ -105,10 +107,13 @@ Sofern noch nicht vergeben möchte ich die folgenden E-Mail Adressen: \\
 		
 		\begin{tabular}{l l l}
 			Ort*								& Datum*							& Unterschrift* \\
-			\UnderlinedField[height=1cm]{signaturePlace}{0.3\textwidth}	& \UnderlinedField[height=1cm]{signatureDate}{0.3\textwidth}	& \\
+			\UnderlinedField[height=1cm]{signaturePlace}{0.3\textwidth}	& \UnderlinedField[height=1cm]{signatureDate}{0.3\textwidth}	& \UnderlinedField[height=1cm,readonly]{signature}{0.3\textwidth} \\
 		\end{tabular}
 	\end{minipage}
 }
+
+\vspace{0.4cm}
+Mit * gekennzeichnete Felder sind Pflichtfelder.
 
 \end{Form}
 

@@ -1,0 +1,116 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[skins]{tcolorbox}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+
+% from https://tex.stackexchange.com/a/146836
+\newtcolorbox{imagetextbox}[3][]{
+  before=\par\bigskip\noindent,after=\par\medskip,
+  blank,sidebyside,center lower,
+  fontlower=\fontsize{25pt}{28pt}\selectfont\bfseries,
+  width=\textwidth-#2-#3,
+  lefthand width=#2,
+  sidebyside gap=#3,#1}
+
+\newcommand{\UnderlinedField}[3][]{\TextField[name=#2,width=#3,bordercolor=black,borderstyle=U,#1]{}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+\begin{imagetextbox}[]{8cm}{3mm}
+	\includegraphics[width=5cm]{logo_quer}
+	\tcblower
+	\vspace{0.5cm}
+	Mitgliedsantrag
+\end{imagetextbox}
+
+
+
+\begin{Form} %TODO set [action={<url>}]?
+
+\section*{Ihre Daten}
+\begin{tabular}{r r r r}
+	\vspace{0.2cm}
+    Name*		& \UnderlinedField{lastName}{0.31\textwidth}	& Vorname*		& \UnderlinedField{firstName}{0.31\textwidth} \\
+    \vspace{0.2cm}
+    Geburtsdatum*	& \UnderlinedField{birthdate}{0.31\textwidth} & Telefon		& \UnderlinedField{phone}{0.31\textwidth} \\
+    \vspace{0.2cm}
+    E-Mail		& \multicolumn{3}{l}{\UnderlinedField{email}{0.82\textwidth}} \\
+    \vspace{0.2cm}
+    Straße*		& \multicolumn{3}{l}{\UnderlinedField{address}{0.82\textwidth}} \\
+    \vspace{0.2cm}
+    PLZ, Ort*	& \multicolumn{3}{l}{\UnderlinedField{city}{0.82\textwidth}} \\
+\end{tabular}
+\vspace{0.2cm}\\
+Art der Mitgliedschaft*:
+	\ChoiceMenu[radio,name=memberType,bordercolor=black,radiosymbol=\ding{54}]{}{ } Natürliche Person
+	\ChoiceMenu[radio,name=memberType,bordercolor=black,radiosymbol=\ding{54}]{}{ } Familie
+	\ChoiceMenu[radio,name=memberType,bordercolor=black,radiosymbol=\ding{54}]{}{ } Unternehmen, Verein oder Behörde
+
+\vspace{0.2cm}
+\CheckBox[name=constitution,bordercolor=black,checkboxsymbol=\ding{54}]{ } Ich habe die Satzung gelesen und akzeptiere sie (\href{https://www.bn-paf.de/satzung.pdf}{https://www.bn-paf.de/satzung.pdf})
+
+
+\section*{E-Mail \& Homepage}
+
+Das Bürgernetz Pfaffenhofen stellt seinen Mitgliedern einen Webserver, Datenbank Server sowie E-Mail Server zur Verfügung. Sofern dies gewünscht ist können dort ein Webseitenverzeichnis sowie E-Mail Adressen mit den Endungen @bn-paf.de und @pfaffenhofen.de angelegt werden.
+\\
+Sofern noch nicht vergeben möchte ich die folgenden E-Mail Adressen: \\
+	\UnderlinedField{mailAddresses}{\textwidth} \\
+\\
+\CheckBox[name=forwardMails,bordercolor=black,checkboxsymbol=\ding{54}]{} Ich wünsche eine automatische Weiterleitung aller E-Mails an oben genannte Adresse.
+
+
+
+\section*{Lastschriftmandat}
+\fbox
+{
+	\begin{minipage}{\textwidth}
+		\textbf{Zahlungsempfänger (Gläubiger):} \\
+		\begin{tabular}{l l}
+			Name					& Bürgernetz Landkreis Pfaffenhofen e.V. \\
+			Adresse					& Sonnenstraße 4 \\
+			PLZ, Ort				& 85276 Pfaffenhofen \\
+			Identifikationsnummer	& DE95BNV00000817521 \\
+		\end{tabular}
+		\\
+
+		Ich ermächtige das Bürgernetz Landkreis Pfaffenhofen e.V.,
+		Zahlungen von meinem Konto mittels Lastschrift einzuziehen.
+		Zugleich weise ich mein Kreditinstitut an, die von dem
+		Bürgernetz Landkreis Pfaffenhofen e.V. auf mein Konto gezogenen
+		Lastschriften einzulösen.
+		\\
+		
+		\textbf{Hinweis: Ich kann innerhalb von acht Wochen, beginnend
+		mit dem Belastungsdatum, die Erstattung des belasteten
+		Betrages verlangen. Es gelten dabei die mit meinem
+		Kreditinstitut vereinbarten Bedingungen.}
+		\\
+		
+		\textbf{Zahlungsart: Wiederkehrende Zahlung}
+		\\
+		
+		\textbf{Zahlungspflichtiger:} \\
+		\begin{tabular}{l l}
+			IBAN*	& \UnderlinedField{iban}{0.8\textwidth} \\
+		\end{tabular}
+		\\
+		
+		\begin{tabular}{l l l}
+			Ort*								& Datum*							& Unterschrift* \\
+			\UnderlinedField[height=1cm]{signaturePlace}{0.3\textwidth}	& \UnderlinedField[height=1cm]{signatureDate}{0.3\textwidth}	& \\
+		\end{tabular}
+	\end{minipage}
+}
+
+\end{Form}
+
+
+\end{document}

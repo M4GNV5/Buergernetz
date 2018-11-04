@@ -1,0 +1,86 @@
+<noscript>Bitte aktivieren sie Javascript um diese Seite anzusehen.</noscript>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+	integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+	crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+	integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+	crossorigin=""></script>
+
+<div id="bnvMap" style="height: 750px; width: 750px;"></div>
+
+<table style="width: 1080px;">
+	<thead>
+		<tr>
+			<th>Verein</th>
+			<th>Adresse</th>
+			<th>PLZ</th>
+			<th>Ort</th>
+			<th>Web</th>
+		</tr>
+	</thead>
+	<tbody id="bnvTable">
+	</tbody>
+</table>
+
+<script type="text/javascript">
+	var entries = [
+		{name: "Förderverein Bürgernetz Fünf-Seen-Land e.V.", street: "Rauscher Str. 10", postal: "82211", city: "Herrsching am Ammersee", url: "www.5sl.org", long: 11.19056, lat: 48.03578},
+		{name: "Förderverein Airnet Erzgebirge e.V.", street: "Schneeberger Strasse 71", postal: "09366", city: "Stollberg", url: "www.airnet-erzgebirge.de", long: 12.765604, lat: 50.688854},
+		{name: "Bürgernetz Allgäu e. V.", street: "Unterwanger Straße 3", postal: "87439", city: "Kempten", url: "www.allgaeu.org", long: 10.305280, lat: 47.744400},
+		{name: "Bürgernetzverein Altmühltal e.V.", street: "Römerstraße 47", postal: "85072", city: "Eichstätt", url: "www.altmuehlnet.de", long: 11.197307, lat: 48.887795},
+		{name: "Förderverein Bürgernetz Ansbach-Netz e.V.", street: "Vordere Gasse 12", postal: "91567", city: "Herrieden", url: "www.annnetz.de", long: 10.496359, lat: 49.233495},
+		{name: "ASAM Bürgernetzförderverein e.V.", street: "Zapflweg 7", postal: "92208", city: "Kastl", url: "www.asamnet.de", long: 11.685800, lat: 49.332622},
+		{name: "Bürgernetz Ingolstadt bingo e.V.", street: "Maximilianstraße 25", postal: "85051", city: "Ingolstadt", url: "www.bingo-ev.de", long: 11.422507, lat: 48.744025},
+		{name: "Bürgernetz Dillingen e.V.", street: "Postfach 1160 Große Allee 24", postal: "89401", city: "Dillingen a.d.Donau", url: "www.bndlg.de", long: 10.490580, lat: 48.579940},
+		{name: "Bürgernetzverein Hof e.V.", street: "St.-Lukas-Weg 29", postal: "95030", city: "Hof", url: "www.bnhof.de", long: 11.889401, lat: 50.317257},
+		{name: "Bürgernetz Main-Spessert", street: "Karolinger Strasse 5", postal: "97753", city: "Karlstadt", url: "www.bnmsp.de", long: 9.757240, lat: 49.971350},
+		{name: "Förderverein Bürgernetz Rosenheim e.V.", street: "Königstrasse 1", postal: "83022", city: "Rosenheim", url: "www.bnro.de", long: 12.129300, lat: 47.855440},
+		{name: "Bürgernetz Bamberg e.V.", street: "Seehofstrasse 41", postal: "96031", city: "Bamberg", url: "www.bnv-bamberg.de", long: 10.924144, lat: 49.914437},
+		{name: "Bürgernetz für den Landkreis Günzburg e.V.", street: "Hardtfeld 11", postal: "89312", city: "Günzburg", url: "www.bnv-gz.de", long: 10.304280, lat: 48.459990},
+		{name: "Förderverein Bürgernetz Sonneberg e.V.", street: "Bahnhofstrasse 66", postal: "96515", city: "Sonneberg", url: "www.bnv-son.de", long: 11.170429, lat: 50.357278},
+		{name: "Bürgernetz Dachau e.V.", street: "Schillerstr. 25", postal: "85221", city: "Dachau", url: "www.dachau.net",  long: 11.434760, lat: 48.252190},
+		{name: "Bürgernetz Deggendorf e.V.", street: "Westl. Stadtgraben 20", postal: "94469", city: "Deggendorf", url: "www.degnet.de", long: 12.960121, lat: 48.834316},
+		{name: "Bürgernetz Dingolfing-Landau e.V.", street: "Postfach 1131", postal: "84122", city: "Dingolfing", url: "www.dingolfing.org", long: 12.500819, lat: 48.629509},
+		{name: "Förderverein Bürgernetz Dresden e.V.", street: "Freiberger Strasse 8", postal: "01069", city: "Dresden", url: "www.fbn-dd.de", long: 48.204950, lat: 11.373490},
+		{name: "Förderverein Bürgernetz Fürstenfeldbruck e. V.", street: "Erikastr. 8c", postal: "82194", city: "Gröbenzell", url: "www.ffb.org", long: 13.724515, lat: 51.050719},
+		{name: "Förderverein innovative Medien und Schulung FiMuS e.V.", street: "Weidenstr. 3", postal: "85368", city: "Moosburg", url: "www.fimus.org", long: 11.939933, lat: 48.461021},
+		{name: "Free-Net Erlangen-Nürnberg-Fürth e.V.", street: "Postfach 1680", postal: "91006", city: "Erlangen", url: "www.fen-net.de", long: 10.984484, lat: 49.589177},
+		{name: "Bürgernetz Gunzenhausen", street: "Blütenstrasse 1a", postal: "91710", city: "Gunzenhausen", url: "www.gunnet.de", long: 10.762560, lat: 49.117050},
+		{name: "Bürgernetz Isar-Loisach e.V.", street: "Adalbert-Stifter-Straße 15", postal: "82538", city: "Geretsried", url: "www.ilo.de", long: 11.474700, lat: 47.867990},
+		{name: "Bürgernetzverein Nürnberger Land e.V.", street: "Sankt Salvatorweg 9", postal: "91207", city: "Lauf", url: "www.lau-net.de", long: 11.280795, lat: 49.512999},
+		{name: "Bürgernetz München Land e.V.", street: "Ziehrerstr. 22", postal: "82008", city: "Unterhaching", url: "www.muela.de", long: 11.607919, lat: 48.071582},
+		{name: "Bürgernetz Neuburg-Schrobenhausen e. V.", street: "Platz der Einheit 1", postal: "86633", city: "Neuburg", url: "www.neusob.de", long: 11.175477, lat: 48.732860},
+		{name: "Bürgernetzverein NEW-WEN-NET e.V.", street: "Stadtplatz 38", postal: "92660", city: "Neustadt", url: "www.new-wen.net", long: 12.173150, lat: 49.730860},
+		{name: "Bürgernetz Landkreis Pfaffenhofen e.V.", street: "Sparkassenplatz 11", postal: "85276", city: "Pfaffenhofen", url: "www.bn-paf.de", long: 11.506520, lat: 48.529110},
+		{name: "Bürgernetz Weihenstephan e.V.", street: "Gartenstrasse 9", postal: "85354", city: "Freising", url: "www.weihenstephan.org", long: 11.749594, lat: 48.410788},
+		{name: "Förderverein Bürgernetzverein Weißenburg und Umgebung e.V", street: "Poststrasse 1", postal: "91718", city: "Weißenburg", url: "www.wugnet.de", long: 10.971857, lat: 49.031865},
+	];
+
+	var mymap = L.map('bnvMap').setView([49.074, 11.547], 7);
+
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		maxZoom: 18,
+		id: 'mapbox.streets'
+	}).addTo(mymap);
+
+	var table = document.getElementById("bnvTable")
+	for(var i = 0; i < entries.length; i++) {
+		var entry = entries[i];
+
+		L.marker([entry.lat, entry.long])
+			.addTo(mymap)
+			.bindPopup("<b>" + entry.name + "</b><br />" +
+				"<a href=\"https://" + entry.url + "\">" + entry.url + "</a>");
+
+		table.innerHTML += "<tr>" +
+			"<td>" + entry.name + "</td>" + 
+			"<td>" + entry.street + "</td>" + 
+			"<td>" + entry.postal + "</td>" + 
+			"<td>" + entry.city + "</td>" + 
+			"<td><a href=\"https://" + entry.url + "\">" + entry.url + "</a>" +
+		"</tr>";
+	}
+</script>

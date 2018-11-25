@@ -50,9 +50,9 @@
 \end{tabular}
 \vspace{0.2cm}\\
 Art der Mitgliedschaft*:
-	\ChoiceMenu[radio,name=memberType,bordercolor=black,radiosymbol=\ding{54}]{}{ } Natürliche Person
-	\ChoiceMenu[radio,name=memberType,bordercolor=black,radiosymbol=\ding{54}]{}{ } Familie
-	\ChoiceMenu[radio,name=memberType,bordercolor=black,radiosymbol=\ding{54}]{}{ } Unternehmen, Verein oder Behörde
+	\CheckBox[radio,name=memberType1,bordercolor=black,radiosymbol=\ding{54}]{}{ } Natürliche Person
+	\CheckBox[radio,name=memberType2,bordercolor=black,radiosymbol=\ding{54}]{}{ } Familie
+	\CheckBox[radio,name=memberType3,bordercolor=black,radiosymbol=\ding{54}]{}{ } Unternehmen, Verein oder Behörde
 \\
 Der Mitgliedsbeitrag beträgt 24€ / Jahr für natürliche Personen. Familien, Unternehmen, Vereine und Behörden zahlen 48€ / Jahr. Die Familienmitgliedschaft besteht aus einzelnen Accounts für jedes Familienmitglied.\\
 
@@ -62,11 +62,13 @@ Der Mitgliedsbeitrag beträgt 24€ / Jahr für natürliche Personen. Familien, 
 \section*{E-Mail \& Homepage}
 
 Das Bürgernetz Pfaffenhofen stellt seinen Mitgliedern einen Webserver, Datenbank Server sowie E-Mail Server zur Verfügung. Sofern dies gewünscht ist können dort ein Webseitenverzeichnis sowie E-Mail Adressen mit den Endungen @bn-paf.de und @pfaffenhofen.de angelegt werden.
-\\
-Sofern noch nicht vergeben möchte ich die folgenden E-Mail Adressen: \\
-	\UnderlinedField{mailAddresses}{\textwidth} \\
+\vspace{0.2cm}
 \\
 \CheckBox[name=forwardMails,bordercolor=black,checkboxsymbol=\ding{54}]{} Ich wünsche eine automatische Weiterleitung aller E-Mails an oben genannte Adresse.
+\vspace{0.2cm}
+\\
+Sofern noch nicht vergeben möchte ich die folgenden E-Mail Adressen Präfixe: \\
+	\UnderlinedField{mailAddresses}{\textwidth}
 
 
 
@@ -77,7 +79,7 @@ Sofern noch nicht vergeben möchte ich die folgenden E-Mail Adressen: \\
 		\textbf{Zahlungsempfänger (Gläubiger):} \\
 		\begin{tabular}{l l}
 			Name					& Bürgernetz Landkreis Pfaffenhofen e.V. \\
-			Adresse					& Sonnenstraße 4 \\
+			Adresse					& Sparkassenplatz 11 \\
 			PLZ, Ort				& 85276 Pfaffenhofen \\
 			Identifikationsnummer	& DE95BNV00000817521 \\
 		\end{tabular}
@@ -112,7 +114,7 @@ Sofern noch nicht vergeben möchte ich die folgenden E-Mail Adressen: \\
 	\end{minipage}
 }
 
-\vspace{0.4cm}
+\vspace{0.3cm}
 Mit * gekennzeichnete Felder sind Pflichtfelder.
 
 \end{Form}

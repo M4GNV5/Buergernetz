@@ -1,0 +1,11 @@
+[verein]
+
+Mitglieder: [mitglieder]
+Adresse: [strasse]
+Ort: [ort]
+E-Mail: [email]
+Webseite: [webseite]
+Vereinsheim: [position]
+
+-- 
+Diese E-Mail wurde von einem Kontaktformular von Buergernetzverband e.V. (https://web.buerger.net) gesendet

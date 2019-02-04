@@ -1,0 +1,53 @@
+<noscript>Bitte aktivieren sie Javascript um den Beitragsberechner zu verwenden.</noscript>
+
+<p>
+	<label>Mitgliederzahl</label>
+	<input type="number" onchange="updateFee(this.value)" />
+</p>
+
+<p>
+	<h4>Komponente 1 (Sockelbetrag)</h4>
+	<span id="feePart1">&nbsp;</span>
+
+	<h4>Komponente 2 (je angefangene 50 Mitglieder)</h4>
+	<span id="feePart2">&nbsp;</span>
+
+	<h4>Summe</h4>
+	<span id="feeSum">&nbsp;</span>
+</p>
+
+<script type="text/javascript">
+	var feePart1 = document.getElementById("feePart1");
+	var feePart2 = document.getElementById("feePart2");
+	var feeSum = document.getElementById("feeSum");
+
+	function updateFee(memberCount)
+	{
+		var fee = calculateFee(memberCount);
+		feePart1.innerHTML = fee.part1 + "€";
+		feePart2.innerHTML = fee.part2 + "€";
+		feeSum.innerHTML = fee.sum + "€";
+	}
+
+	function calculateFee(memberCount)
+	{
+		var part1 = 0;
+		if(memberCount > 1000)
+			part1 = 250;
+		else if(memberCount > 500)
+			part1 = 150;
+		else if(memberCount > 50)
+			part1 = 100;
+
+		var part2 = 0;
+		var memberBlocks = Math.ceil(memberCount / 50);
+		for(; memberBlocks > 6; memberBlocks--)
+			part2 += 10;
+		for(; memberBlocks > 3; memberBlocks--)
+			part2 += 15;
+		for(; memberBlocks > 0; memberBlocks--)
+			part2 += 40;
+
+		return {sum: part1 + part2, part1: part1, part2: part2};
+	}
+</script>

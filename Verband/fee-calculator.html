@@ -5,18 +5,25 @@
 	<input type="number" onchange="updateFee(this.value)" />
 </p>
 
-<p>
-	<h4>Komponente 1 (Sockelbetrag)</h4>
-	<span id="feePart1">&nbsp;</span>
-
-	<h4>Komponente 2 (je angefangene 50 Mitglieder)</h4>
-	<span id="feePart2">&nbsp;</span>
-
-	<h4>Summe</h4>
-	<span id="feeSum">&nbsp;</span>
-</p>
+<table id="feeResult" style="display: none;">
+	<tbody>
+		<tr>
+			<td>Komponente 1</td>
+			<td id="feePart1"></td>
+		</tr>
+		<tr>
+			<td>Komponente 2</td>
+			<td id="feePart2"></td>
+		</tr>
+		<tr>
+			<td><b>Summe</b></td>
+			<td id="feeSum"></td>
+		</tr>
+	</tbody>
+</table>
 
 <script type="text/javascript">
+	var feeResult = document.getElementById("feeResult");
 	var feePart1 = document.getElementById("feePart1");
 	var feePart2 = document.getElementById("feePart2");
 	var feeSum = document.getElementById("feeSum");
@@ -24,6 +31,7 @@
 	function updateFee(memberCount)
 	{
 		var fee = calculateFee(memberCount);
+		feeResult.style = "";
 		feePart1.innerHTML = fee.part1 + "€";
 		feePart2.innerHTML = fee.part2 + "€";
 		feeSum.innerHTML = fee.sum + "€";

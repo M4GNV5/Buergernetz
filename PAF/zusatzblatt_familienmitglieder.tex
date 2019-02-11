@@ -1,0 +1,65 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage[skins]{tcolorbox}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+
+% from https://tex.stackexchange.com/a/146836
+\newtcolorbox{imagetextbox}[3][]{
+  before=\par\bigskip\noindent,after=\par\medskip,
+  blank,sidebyside,center lower,
+  fontlower=\fontsize{25pt}{28pt}\selectfont\bfseries,
+  width=\textwidth-#2-#3,
+  lefthand width=#2,
+  sidebyside gap=#3,#1}
+
+\newcommand{\UnderlinedField}[3][]{\TextField[name=#2,width=#3,bordercolor=black,borderstyle=U,#1]{}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+\begin{imagetextbox}[]{8cm}{3mm}
+	\includegraphics[width=5cm]{logo_quer}
+	\tcblower
+	\vspace{0.5cm}
+	Zusatzblatt \\
+	Familienmitglied
+\end{imagetextbox}
+
+
+
+\begin{Form} %TODO set [action={<url>}]?
+
+\section*{Ihre Daten}
+\begin{tabular}{r r r r}
+	\vspace{0.2cm}
+    Name*		& \UnderlinedField{lastName}{0.31\textwidth}	& Vorname*		& \UnderlinedField{firstName}{0.31\textwidth} \\
+    \vspace{0.2cm}
+    Geburtsdatum*	& \UnderlinedField{birthdate}{0.31\textwidth}	& Telefon		& \UnderlinedField{phone}{0.31\textwidth} \\
+    \vspace{0.2cm}
+    E-Mail		& \multicolumn{3}{l}{\UnderlinedField{email}{0.82\textwidth}} \\
+    \vspace{0.2cm}
+\end{tabular}
+\\
+
+\CheckBox[name=constitution,bordercolor=black,checkboxsymbol=\ding{54}]{ } Ich habe die Satzung gelesen und akzeptiere sie* (\href{https://www.bn-paf.de/satzung.pdf}{\texttt{https://www.bn-paf.de/satzung.pdf}})
+
+
+\section*{E-Mail}
+
+Sofern noch nicht vergeben möchte ich die folgenden E-Mail Adressen Präfixe: \\
+	\UnderlinedField{mailAddresses}{\textwidth}
+
+\vspace{0.8cm}
+Mit * gekennzeichnete Felder sind Pflichtfelder.
+
+\end{Form}
+
+
+\end{document}

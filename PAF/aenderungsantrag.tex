@@ -28,44 +28,33 @@
 	\includegraphics[width=5cm]{logo_quer}
 	\tcblower
 	\vspace{0.5cm}
-	Mitgliedsantrag
+	Änderungsantrag
 \end{imagetextbox}
-
-
 
 \begin{Form} %TODO set [action={<url>}]?
 
 \section*{Ihre Daten}
+\textbf{Geänderte Daten bitte ausfüllen.}\\
+\\
 \begin{tabular}{r r r r}
 	\vspace{0.2cm}
-    Name*		& \UnderlinedField{lastName}{0.31\textwidth}	& Vorname*		& \UnderlinedField{firstName}{0.31\textwidth} \\
+    Name		& \UnderlinedField{lastName}{0.31\textwidth}	& Vorname		& \UnderlinedField{firstName}{0.31\textwidth} \\
     \vspace{0.2cm}
-    Geburtsdatum*	& \UnderlinedField{birthdate}{0.31\textwidth}	& Telefon		& \UnderlinedField{phone}{0.31\textwidth} \\
+    Telefon	& \UnderlinedField{phone}{0.31\textwidth} & & \\
     \vspace{0.2cm}
     E-Mail		& \multicolumn{3}{l}{\UnderlinedField{email}{0.82\textwidth}} \\
     \vspace{0.2cm}
-    Straße*		& \multicolumn{3}{l}{\UnderlinedField{address}{0.82\textwidth}} \\
+    Straße		& \multicolumn{3}{l}{\UnderlinedField{address}{0.82\textwidth}} \\
     \vspace{0.2cm}
-    PLZ, Ort*	& \multicolumn{3}{l}{\UnderlinedField{city}{0.82\textwidth}} \\
+    PLZ, Ort	& \multicolumn{3}{l}{\UnderlinedField{city}{0.82\textwidth}} \\
 \end{tabular}
-\vspace{0.2cm}\\
-Art der Mitgliedschaft*:
-	\CheckBox[radio,name=memberType1,bordercolor=black,radiosymbol=\ding{54}]{}{ } Natürliche Person (24€/Jahr)
-	\CheckBox[radio,name=memberType2,bordercolor=black,radiosymbol=\ding{54}]{}{ } Familie (48€/Jahr)
-
-\CheckBox[name=constitution,bordercolor=black,checkboxsymbol=\ding{54}]{ } Ich habe die Satzung gelesen und akzeptiere sie* (\href{https://www.bn-paf.de/satzung.pdf}{\texttt{https://www.bn-paf.de/satzung.pdf}})
 
 
-\section*{E-Mail \& Homepage}
-
-Das Bürgernetz Pfaffenhofen stellt seinen Mitgliedern einen Webserver, Datenbank Server sowie E-Mail Server zur Verfügung. Sofern dies gewünscht ist können dort ein Webseitenverzeichnis sowie E-Mail Adressen mit den Endungen @bn-paf.de und @pfaffenhofen.de angelegt werden.
-\\
-Sofern noch nicht vergeben möchte ich die folgenden E-Mail Adressen Präfixe: \\
-	\UnderlinedField{mailAddresses}{\textwidth}
-
-
+\vspace{0.2cm}
 
 \section*{Lastschriftmandat}
+\textbf{Bei geänderter Bankverbindung bitte ausfüllen}\\
+\\
 \fbox
 {
 	\begin{minipage}{\textwidth}

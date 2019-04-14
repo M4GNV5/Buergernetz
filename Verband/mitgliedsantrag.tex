@@ -1,0 +1,108 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage[skins]{tcolorbox}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+
+% from https://tex.stackexchange.com/a/146836
+\newtcolorbox{imagetextbox}[3][]{
+  before=\par\bigskip\noindent,after=\par\medskip,
+  blank,sidebyside,center lower,
+  fontlower=\fontsize{25pt}{28pt}\selectfont\bfseries,
+  width=\textwidth-#2-#3,
+  lefthand width=#2,
+  sidebyside gap=#3,#1}
+
+\newcommand{\UnderlinedField}[3][]{\TextField[name=#2,width=#3,bordercolor=black,borderstyle=U,#1]{}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+\begin{imagetextbox}[]{8cm}{3mm}
+	\includegraphics[width=5cm]{logo}
+	\tcblower
+	\vspace{0.5cm}
+	Mitgliedsantrag \\
+	Bürgernetzverband
+\end{imagetextbox}
+
+
+
+\begin{Form} %TODO set [action={<url>}]?
+
+\section*{Ihre Daten}
+\begin{tabular}{r r r r}
+	\vspace{0.2cm}
+    Name*			& \UnderlinedField{company}{0.82\textwidth} \\
+    \vspace{0.2cm}
+    Kontaktperson	& \UnderlinedField{company}{0.82\textwidth}  \\
+    \vspace{0.2cm}
+    Telefon		& \UnderlinedField{phone}{0.82\textwidth} \\
+    \vspace{0.2cm}
+    Webseite		& \UnderlinedField{website}{0.82\textwidth} \\
+    \vspace{0.2cm}
+    E-Mail*		& \UnderlinedField{email}{0.82\textwidth} \\
+    \vspace{0.2cm}
+    Straße*		& \UnderlinedField{address}{0.82\textwidth} \\
+    \vspace{0.2cm}
+    PLZ, Ort*	& \UnderlinedField{city}{0.82\textwidth} \\
+    \vspace{0.2cm}
+    Mitgliederzahl*	& \UnderlinedField{members}{0.82\textwidth} \\
+\end{tabular}
+
+\CheckBox[name=constitution,bordercolor=black,checkboxsymbol=\ding{54}]{ } Wir haben die \href{https://www.buerger.net/wp-content/uploads/2018/12/Satzung_19_04_2008_02.pdf}{\texttt{Satzung}} gelesen und akzeptieren sie*
+
+
+
+\section*{Lastschriftmandat}
+\fbox
+{
+	\begin{minipage}{\textwidth}
+		\textbf{Zahlungsempfänger (Gläubiger):} \\
+		\begin{tabular}{l l}
+			Name					& Bürgernetzverband e.V. \\
+			Adresse					& Sparkassenplatz 11 \\
+			PLZ, Ort				& 85276 Pfaffenhofen \\
+			Identifikationsnummer	& DE78BNV00000172098 \\
+		\end{tabular}
+		\\
+
+		Wir ermächtigen den Bürgernetzverband e.V.,
+		Zahlungen von unserem Konto mittels Lastschrift einzuziehen.
+		Zugleich weisen wir unser Kreditinstitut an, die von dem
+		Bürgernetzverband e.V. auf unser Konto gezogenen Lastschriften
+		einzulösen.
+		\\
+		
+		\textbf{Hinweis: Wir können innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit unserem Kreditinstitut vereinbarten Bedingungen.}
+		\\
+		
+		\textbf{Zahlungart: Wiederkehrende Zahlungen}
+		\\
+
+		\textbf{Zahlungspflichtiger:} \\
+		\begin{tabular}{l l}
+			IBAN*	& \UnderlinedField{iban}{0.8\textwidth} \\
+		\end{tabular}
+		\\
+		
+		\begin{tabular}{l l l}
+			Ort*								& Datum*							& Unterschrift* \\
+			\UnderlinedField[height=1cm]{signaturePlace}{0.3\textwidth}	& \UnderlinedField[height=1cm]{signatureDate}{0.3\textwidth}	& \UnderlinedField[height=1cm,readonly]{signature}{0.3\textwidth} \\
+		\end{tabular}
+	\end{minipage}
+}
+
+\vspace{0.8cm}
+Mit * gekennzeichnete Felder sind Pflichtfelder.
+
+\end{Form}
+
+
+\end{document}

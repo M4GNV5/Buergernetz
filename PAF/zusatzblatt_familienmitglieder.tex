@@ -22,8 +22,7 @@
 
 \pagenumbering{gobble}
 
-\begin{document}
-
+\newcommand{\formcontet}[1]{
 \begin{imagetextbox}[]{8cm}{3mm}
 	\includegraphics[width=5cm]{logo_quer}
 	\tcblower
@@ -32,34 +31,38 @@
 	Familienmitglied
 \end{imagetextbox}
 
-
-
 \begin{Form} %TODO set [action={<url>}]?
 
 \section*{Ihre Daten}
 \begin{tabular}{r r r r}
 	\vspace{0.2cm}
-    Name*		& \UnderlinedField{lastName}{0.31\textwidth}	& Vorname*		& \UnderlinedField{firstName}{0.31\textwidth} \\
+    Name*		& \UnderlinedField{lastName#1}{0.31\textwidth}	& Vorname*		& \UnderlinedField{firstName#1}{0.31\textwidth} \\
     \vspace{0.2cm}
-    Geburtsdatum*	& \UnderlinedField{birthdate}{0.31\textwidth}	& Telefon		& \UnderlinedField{phone}{0.31\textwidth} \\
+    Geburtsdatum*	& \UnderlinedField{birthdate#1}{0.31\textwidth}	& Telefon		& \UnderlinedField{phone#1}{0.31\textwidth} \\
     \vspace{0.2cm}
-    E-Mail		& \multicolumn{3}{l}{\UnderlinedField{email}{0.82\textwidth}} \\
+    E-Mail		& \multicolumn{3}{l}{\UnderlinedField{email#1}{0.82\textwidth}} \\
     \vspace{0.2cm}
 \end{tabular}
 \\
 
-\CheckBox[name=constitution,bordercolor=black,checkboxsymbol=\ding{54}]{ } Ich habe die Satzung gelesen und akzeptiere sie* (\href{https://www.bn-paf.de/satzung.pdf}{\texttt{https://www.bn-paf.de/satzung.pdf}})
+\CheckBox[name=constitution#1,bordercolor=black,checkboxsymbol=\ding{54}]{ } Ich habe die Satzung gelesen und akzeptiere sie* (\href{https://www.bn-paf.de/satzung.pdf}{\texttt{https://www.bn-paf.de/satzung.pdf}})
 
 
 \section*{E-Mail}
 
 Sofern noch nicht vergeben möchte ich die folgenden E-Mail Adressen Präfixe: \\
-	\UnderlinedField{mailAddresses}{\textwidth}
+	\UnderlinedField{mailAddresses#1}{\textwidth}
 
 \vspace{0.8cm}
 Mit * gekennzeichnete Felder sind Pflichtfelder.
 
 \end{Form}
+}
 
+\begin{document}
+
+\formcontet{A}
+\vspace{3cm}
+\formcontet{B}
 
 \end{document}

@@ -1,0 +1,50 @@
+\documentclass[12pt]{letter}
+
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage[left=2cm,top=-3cm,right=2cm,bottom=2cm]{geometry}
+
+\pagenumbering{gobble}
+
+\address{\includegraphics[width=3cm]{logo.pdf}}
+
+\begin{document}
+
+\begin{letter}{
+	|BnName| \\
+	|Strasse| \\
+	|PLZ| |Ort|
+}
+
+\opening{Sehr geehrte Damen und Herren,}
+
+Wir erlauben uns für das Jahr |Jahr| wie folgt zu berechnen:
+
+\begin{tabular}{| l | l | l | l |}
+	\hline
+	Rate & Reguläre Fälligkeit & Bezeichnung & Betrag \\
+	\hline
+	1 & 15.02.|Jahr| & 1. Halbjahr |Jahr| & |BetragHalb| \\
+	2 & 15.08.|Jahr| & 2. Halbjahr |Jahr| & |BetragHalb| \\	
+	\hline
+\end{tabular}
+
+Basis für die Berechnung sind \textbf{|Mitglieder|} Vereinsmitglieder. \\
+Ihre Mandatsreferenz: \textbf{|Mandat|} \\
+
+Den Betrag bitte auf folgendes Konto überweisen: \\
+\begin{tabular}{l l}
+Bank & Sparkasse Mittelfranken Süd \\
+IBAN & DE71 7645 0000 0221 2382 15 \\ 
+BIC & BYLADEM1SRS \\
+\end{tabular}
+
+\vspace{2em}
+
+Mit freundlichen Grüßen \\
+Jakob Löw
+
+\end{letter}
+
+\end{document}

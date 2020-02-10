@@ -7,7 +7,10 @@
 
 \pagenumbering{gobble}
 
-\address{\includegraphics[width=3cm]{logo.pdf}}
+\address{\includegraphics[width=3cm]{logo.pdf} \\
+	Bürgernetzverband e.V. \\
+	Sparkassenplatz 11 \\
+	85276 Pfaffenhofen}
 
 \begin{document}
 

@@ -1,0 +1,78 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage[skins]{tcolorbox}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+
+% from https://tex.stackexchange.com/a/146836
+\newtcolorbox{imagetextbox}[3][]{
+  before=\par\bigskip\noindent,after=\par\medskip,
+  blank,sidebyside,center lower,
+  fontlower=\fontsize{25pt}{28pt}\selectfont\bfseries,
+  width=\textwidth,
+  lefthand width=#2,
+  sidebyside gap=#3,#1}
+
+\newcommand{\UnderlinedField}[3][]{\TextField[name=#2,width=#3,bordercolor=black,borderstyle=U,#1]{}}
+\newcommand{\UnderlinedArea}[3][]{\TextArea[name=#2,width=#3,bordercolor=black,borderstyle=U,#1]{}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+\begin{imagetextbox}[]{8cm}{3mm}
+	\includegraphics[width=5cm]{logo_quer}
+	\tcblower
+	\vspace{0.5cm}
+	Nachweis ehrenamtlicher Arbeit
+\end{imagetextbox}
+
+\begin{Form} %TODO set [action={<url>}]?
+
+\section*{Person}
+\begin{tabular}{r r}
+	\vspace{0.2cm}
+	Name			& \UnderlinedField{lastName}{0.7\textwidth} \\
+    \vspace{0.2cm}
+	Geburtsdatum	& \UnderlinedField{birthday}{0.7\textwidth} \\
+    \vspace{0.2cm}
+	Straße			& \UnderlinedField{address}{0.7\textwidth} \\
+    \vspace{0.2cm}
+	Ort				& \UnderlinedField{city}{0.7\textwidth} \\
+\end{tabular}
+
+\section*{Tätigkeit}
+\begin{tabular}{r r}
+    \vspace{0.2cm}
+	Zeitraum		& \UnderlinedField{time}{0.7\textwidth} \\
+    \vspace{0.2cm}
+	Funktion		& \UnderlinedField{job}{0.7\textwidth} \\
+    \vspace{0.2cm}
+	Arbeitsbereich	& \UnderlinedField{area}{0.7\textwidth} \\
+    \vspace{0.2cm}
+	Beschreibung	& \UnderlinedArea[height=2cm]{description}{0.7\textwidth}
+\end{tabular}
+
+\vspace{0.5cm}
+\section*{Unterschrift}
+\begin{tabular}{l l l}
+    \vspace{0.2cm}
+	Ort & Datum & Unterschrift \\
+    \vspace{0.2cm}
+	\UnderlinedField[height=1cm]{signaturePlace}{0.3\textwidth}	& \UnderlinedField[height=1cm]{signatureDate}{0.3\textwidth}	& \UnderlinedField[height=1cm,readonly]{signature}{0.3\textwidth} \\
+    \vspace{0.2cm}
+	& & \UnderlinedField{signatureDate}{0.3\textwidth} \\
+    \vspace{0.2cm}
+	& & Zeichnender \\
+\end{tabular}
+
+
+\end{Form}
+
+
+\end{document}

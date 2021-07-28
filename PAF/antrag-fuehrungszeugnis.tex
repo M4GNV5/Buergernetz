@@ -1,0 +1,55 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage[skins]{tcolorbox}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+
+\setlength{\parindent}{0pt}
+
+% from https://tex.stackexchange.com/a/146836
+\newtcolorbox{imagetextbox}[3][]{
+  before=\par\bigskip\noindent,after=\par\medskip,
+  blank,sidebyside,center lower,
+  fontlower=\fontsize{25pt}{28pt}\selectfont\bfseries,
+  width=\textwidth,
+  lefthand width=#2,
+  sidebyside gap=#3,#1}
+
+\newcommand{\UnderlinedField}[3][]{\TextField[name=#2,width=#3,bordercolor=black,borderstyle=U,#1]{}}
+\newcommand{\UnderlinedArea}[3][]{\TextField[name=#2,width=#3,bordercolor=black,multiline=True,borderstyle=U,#1]{}}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+\begin{imagetextbox}[]{8cm}{3mm}
+	\includegraphics[width=5cm]{logo_quer} \\
+	\tcblower
+	\vspace{0.5cm}
+	Gebührenbefreiung Führungszeugnis
+\end{imagetextbox}
+
+\begin{Form} %TODO set [action={<url>}]?
+
+\vspace{4em}
+
+Sehr geehrte Damen und Herren, \\
+
+unser Verein bietet unter anderem Kurse für Kinder und Jugendliche an, um diese an digitale Technik heranzuführen. Wir sind ein als gemeinnützig anerkannter Verein. Herr/Frau \UnderlinedField{lastName}{0.3\textwidth}, geb. am \UnderlinedField{birthday}{0.3\textwidth} wohnhaft \\ \UnderlinedField{address}{0.8\textwidth}, ist bei uns ehrenamtlich und unentgeltlich tätig. Im Rahmen seines/ihres Ehrenamts gehört u.a. die Beaufsichtigung, Betreuung, Erziehung und Ausbildung von Minder­jährigen (§ 30a Abs. 1 Nr. 2b BZRG) zu seinem/ihrem Aufgabenbereich. Aus diesem Grund bitten wir mit Bezug auf das Bundeszentralregistergesetz (§ 30a) um Erstellung eines erweiterten Führungszeugnisses zur Vorlage bei uns. Unter Hinweis auf die Richtlinien des Bundesamtes für Justiz beantragen wir zugleich die Gebührenfreiheit. Wir bedanken uns für Ihre Unterstützung und verbleiben mit freundlichen Grüßen \\
+
+Ort, Datum, Unterschrift \\
+
+\UnderlinedField[height=1cm,readonly]{signature}{0.5\textwidth} \\
+Vorstand, Bürgernetz Landkreis Pfaffenhofen e.V.
+
+
+
+\end{Form}
+
+
+\end{document}
